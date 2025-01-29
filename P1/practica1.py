@@ -2,8 +2,11 @@ import numpy as np
 import cv2 as cv
 import math
 import matplotlib.pyplot as plt
+import os
  
 # Estela Pillo González
+
+os.makedirs("salidas", exist_ok=True)
 
 # Alteración del rango dinámico
 def adjustIntensity(inImage, inRange=[], outRange=[0,1]):
@@ -367,7 +370,7 @@ def mostrar_imagenes_y_histogramas(inImage, outImage, titulo_original, titulo_re
 
 # Test para ajustar la intensidad
 def testAdjustIntensity():
-    inImage = cv.imread('grays.png', cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/grays.png', cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     inImageNorm = inImage / 255.0
@@ -380,7 +383,7 @@ def testAdjustIntensity():
 
 # Test para ecualización de intensidad
 def testEqualizeIntensity():
-    inImage = cv.imread('grays.png', cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/grays.png', cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     inImageNorm = inImage / 255.0
@@ -393,7 +396,7 @@ def testEqualizeIntensity():
 
 #Test para probar el filtrado especial mediante convolución
 def testFilterImage(): 
-    inImage = cv.imread('circles.png', cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/circles.png', cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     inImageNorm = inImage / 255.0
@@ -425,7 +428,7 @@ def testGaussKernel1D():
 
 # Test para probar el suavizado Gaussiano bidimensional
 def testGaussianFilter():
-    inImage = cv.imread('chica.jpeg', cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/chica.jpeg', cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     inImageNorm = inImage / 255.0
@@ -438,7 +441,7 @@ def testGaussianFilter():
 
 # Test para probar el filtro de medianas bidimensional
 def testMedianFilter():
-    inImage = cv.imread('chica.jpeg',cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/chica.jpeg',cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     inImageNorm = inImage / 255.0
@@ -451,7 +454,7 @@ def testMedianFilter():
 
 # Test para probar la erosión
 def testErode():
-    inImage = cv.imread('morph.png',cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/morph.png',cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     kernel = np.array([
@@ -471,7 +474,7 @@ def testErode():
 
 # Test para probar la dilatación
 def testDilate():
-    inImage = cv.imread('morph.png',cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/morph.png',cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     kernel = np.array([
@@ -491,7 +494,7 @@ def testDilate():
 
 # Test para probar la apertura 
 def testOpening():
-    inImage = cv.imread('dilatacion.png',cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/dilatacion.png',cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     kernel = np.array([
@@ -511,7 +514,7 @@ def testOpening():
 
 # Test para probar el cierre
 def testClosing():
-    inImage = cv.imread('cierre.png',cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/cierre.png',cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     kernel = np.array([
@@ -565,7 +568,7 @@ def testFill():
 
 # Función para probar el gradiente de una imagen
 def testGradientImage():
-    inImage = cv.imread('circles.png', cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/circles.png', cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     inImageNorm = inImage / 255
@@ -589,7 +592,7 @@ def testGradientImage():
 
 # Test para probar el filtro Laplaciano de Gaussiano
 def testLoG():
-    inImage = cv.imread('chica.jpeg', cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/chica.jpeg', cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     min = np.min(inImage)
@@ -605,7 +608,7 @@ def testLoG():
 
 # Test para probar el detector de bordes de Canny
 def testCanny():
-    inImage = cv.imread('chica.jpeg',cv.IMREAD_GRAYSCALE)
+    inImage = cv.imread('entradas/chica.jpeg',cv.IMREAD_GRAYSCALE)
     assert inImage is not None, "Error: No se pudo cargar la imagen"
 
     inImageNorm = inImage / 255
